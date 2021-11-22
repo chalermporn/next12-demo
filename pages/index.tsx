@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export async function getServerSideProps(res: any) {
+export async function getServerSideProps({ req, res }) {
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=10, stale-while-revalidate=59'
@@ -15,7 +15,7 @@ export async function getServerSideProps(res: any) {
     },
   }
 }
-const Home: NextPage = (time: any) => {
+const Home: NextPage = ({ time }) => {
   return (
     <div className={styles.container}>
       <Head>
